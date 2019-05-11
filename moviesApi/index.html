@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i"
+        rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/one-page-wonder.min.css" rel="stylesheet">
+
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="index.js"></script>
+
+
+    <!--Stylesheets-->
+
+    <title>Document</title>
+</head>
+
+<body>
+    <section id="beginForm">
+
+        <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
+            <div class="container">
+                <a class="navbar-brand" href="#">Movie Buyer</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                    aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                        </li>
+                        <li class="nav-item">
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <header class="masthead text-center text-white">
+            <div class="masthead-content">
+                <div class="container">
+                    <h1 class="masthead-heading mb-0">Welcome to MoviesRus</h1>
+                    <h2 class="masthead-subheading mb-0">We sell movies</h2>
+                    <button onClick="clearPage()" class=" btn btn-primary btn-xl rounded-pill mt-5 startOrder">Start
+                        Order</button>
+                </div>
+            </div>
+            <div class="bg-circle-1 bg-circle"></div>
+            <div class="bg-circle-2 bg-circle"></div>
+            <div class="bg-circle-3 bg-circle"></div>
+            <div class="bg-circle-4 bg-circle"></div>
+        </header>
+
+        <section>
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-6 order-lg-2">
+                        <div class="p-5">
+                            <img class="img-fluid rounded-circle" src="img/01.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="col-lg-6 order-lg-1">
+                        <div class="p-5">
+                            <h2 class="display-4">These are movies</h2>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod aliquid, mollitia odio
+                                veniam sit iste esse assumenda amet aperiam exercitationem, ea animi blanditiis
+                                recusandae! Ratione voluptatum molestiae adipisci, beatae obcaecati.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-6">
+                        <div class="p-5">
+                            <img class="img-fluid rounded-circle" src="img/02.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="p-5">
+                            <h2 class="display-4">We salute you!</h2>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod aliquid, mollitia odio
+                                veniam sit iste esse assumenda amet aperiam exercitationem, ea animi blanditiis
+                                recusandae! Ratione voluptatum molestiae adipisci, beatae obcaecati.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-6 order-lg-2">
+                        <div class="p-5">
+                            <img class="img-fluid rounded-circle" src="img/03.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="col-lg-6 order-lg-1">
+                        <div class="p-5">
+                            <h2 class="display-4">Let there be rock!</h2>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod aliquid, mollitia odio
+                                veniam sit iste esse assumenda amet aperiam exercitationem, ea animi blanditiis
+                                recusandae! Ratione voluptatum molestiae adipisci, beatae obcaecati.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div id="app">
+            <div id="row" class="row">
+
+            </div>
+        </div>
+    </section>
+
+    <script>
+
+
+
+        Vue.component('movietable', {
+            props: ['title', 'price', 'mid'],
+            template: `
+                <tr>
+                    <td>{{title}}</td>
+                    <td>{{price}}</td>
+                    <td>
+                    <div class="quantity">
+                        <button @click="addThisToCart(mid)">You clicked me {{ count }} times.</button>
+                    </div>
+                    </td>
+                </tr>
+                `,
+            data: function () {
+                return {
+                    count: 0
+                }
+            },
+        });
+
+
+        // <button v-on:click="orderThis({{mitem}})" style="margin-top: auto;"> {{mitem}}was clicked times.</button>
+        // 
+
+        function clearPage() {
+            document.getElementById('beginForm').innerHTML = " ";
+            document.getElementById('beginForm').innerHTML += `
+        <div id="app">
+            <div id="row" class="row">
+                
+            </div>
+                <div class="container">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Title</th>
+                                    <th>price</th>
+                                    <th>Quantity</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tableSection" class="table table-striped tableSection">
+
+                            </tbody>
+                            <tfoot>
+
+                            </tfoot>
+                        </table>
+
+                </div>
+         </div>
+
+
+
+         
+            `
+        }
+
+        function someVue() {
+            Vue.component('card', {
+                props: ['source', 'text', 'title'],
+                template: ` <div class="card col" style="width: 18rem;">
+                        <img :src="source" class="card-img-top" alt="Picture">
+                        <div class="card-body">
+                        <h5 class="card-title">{{title}}</h5>
+                        <p class="card-text">{{text}}</p>
+                        </div>
+                        </div>`
+            });
+            Vue.component('movietable', {
+                props: ['title', 'price', 'mid'],
+                template: `
+                <tr>
+                    <td>{{title}}</td>
+                    <td>{{price}}</td>
+                    <td>
+                    <div class="quantity">
+                        <button v-on:click="addThisToCart('mid')">You clicked me {{ count }} times.</button>
+                    </div>
+                    </td>
+                </tr>
+                `,
+                data: function () {
+                    return {
+                        count: 0
+                    }
+
+                },
+
+                methods: {
+                    addThisToCart: function (movieId) {
+                        var movieId = this.mid;
+                        this.cart += 1;
+                        this.cart += 1;
+                        console.log(movieId);
+                        console.log(cart);
+                    }
+                },
+                });
+
+            var app = new Vue({
+                el: "#app",
+                data: {
+                    cartItem: 0,
+                },
+                methods: {
+                    orderThis: function (anItem) {
+                        anItem.ordered += 1,
+                            this.cartItem += 1
+                    },
+                    deleteThis: function (dlItem) {
+                        dlItem.ordered -= 1,
+                            this.cartItem -= 1
+                    },
+                    addCart: function () {
+
+                    }
+                }
+            })
+
+        }       // END VUE APP FUNCTION
+        var cart = 0;
+
+        function getCart() {
+            return cart;
+        }
+        function addThisToCart(movieId) {
+            var movieId = this.mid;
+            this.cart += 1;
+            this.cart += 1;
+            console.log(movieId);
+            console.log(cart);
+        }
+        function deletThisMovie(movieId) {
+            this.movieId -= 1;
+            this.cart -= 1;
+            console.log(movieId);
+            console.log(cart);
+        }
+    </script>
+</body>
+
+</html>
